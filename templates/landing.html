@@ -24,7 +24,7 @@
 
         <div class="hv2-actions">
             <a href="{{ url_for('register') }}" class="btn-hv2">Create free account</a>
-            <a href="#features" class="btn-hv2 btn-hv2-green">See how it works</a>
+            <a href="#" id="btn-see-how" class="btn-hv2 btn-hv2-green">See how it works</a>
         </div>
 
         <div class="hv2-browser">
@@ -97,4 +97,119 @@
     </div>
 </section>
 
+<!-- Video modal -->
+<div id="video-modal" class="vmodal-overlay" aria-hidden="true">
+    <div class="vmodal-box" role="dialog" aria-modal="true" aria-label="How Spendly works">
+        <button id="vmodal-close" class="vmodal-close" aria-label="Close video">&times;</button>
+        <div class="vmodal-video-wrap">
+            <iframe
+                id="vmodal-iframe"
+                data-src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                src=""
+                title="How Spendly works"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block head %}
+<style>
+    .vmodal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 15, 15, 0.75);
+        z-index: 500;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+    }
+
+    .vmodal-overlay.is-open {
+        display: flex;
+    }
+
+    .vmodal-box {
+        position: relative;
+        background: var(--paper-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        width: 100%;
+        max-width: 820px;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+    }
+
+    .vmodal-close {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.9rem;
+        background: none;
+        border: none;
+        font-size: 1.75rem;
+        line-height: 1;
+        color: var(--ink-muted);
+        cursor: pointer;
+        z-index: 10;
+        transition: color 0.15s;
+    }
+
+    .vmodal-close:hover { color: var(--ink); }
+
+    .vmodal-video-wrap {
+        position: relative;
+        padding-top: 56.25%; /* 16:9 */
+    }
+
+    .vmodal-video-wrap iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    (function () {
+        const overlay  = document.getElementById('video-modal');
+        const iframe   = document.getElementById('vmodal-iframe');
+        const openBtn  = document.getElementById('btn-see-how');
+        const closeBtn = document.getElementById('vmodal-close');
+
+        function openModal(e) {
+            e.preventDefault();
+            iframe.src = iframe.dataset.src;
+            overlay.classList.add('is-open');
+            overlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            iframe.src = '';   // stops playback immediately
+            overlay.classList.remove('is-open');
+            overlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        openBtn.addEventListener('click', openModal);
+        closeBtn.addEventListener('click', closeModal);
+
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) closeModal();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
+        });
+    })();
+</script>
 {% endblock %}
