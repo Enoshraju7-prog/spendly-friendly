@@ -528,3 +528,215 @@ a { color: inherit; text-decoration: none; }
     .nav-links a:not(.nav-cta) { display: none; }
     .hero { padding: 3rem 1rem 2rem; }
 }
+
+/* ------------------------------------------------------------------ */
+/* Hero v2                                                             */
+/* ------------------------------------------------------------------ */
+
+.hero-v2 {
+    background: var(--paper);
+    padding: 4.5rem 2rem 5rem;
+    text-align: center;
+}
+
+.hv2-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Pill */
+.hv2-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-light);
+    border: 1px solid #a8c9b0;
+    color: var(--accent);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.4rem 1.1rem;
+    border-radius: 999px;
+    margin-bottom: 2rem;
+}
+
+.hv2-pill-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Title */
+.hv2-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 5rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.hv2-line1 {
+    color: var(--ink);
+}
+
+.hv2-line2 {
+    color: var(--accent);
+}
+
+/* Subtitle */
+.hv2-subtitle {
+    font-size: 1.1rem;
+    color: var(--ink-muted);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+}
+
+/* Buttons */
+.hv2-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3.5rem;
+}
+
+.btn-hv2 {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.85rem 2rem;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-hv2:hover { background: var(--accent); }
+
+.btn-hv2-green {
+    background: var(--accent);
+}
+
+.btn-hv2-green:hover { background: #0f2e1a; }
+
+/* Browser mock window */
+.hv2-browser {
+    width: 100%;
+    max-width: 780px;
+    background: var(--paper-warm);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.06);
+}
+
+.hb-chrome {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.hb-dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+}
+
+.hb-red    { background: #ef4444; }
+.hb-yellow { background: #f59e0b; }
+.hb-green  { background: #22c55e; }
+
+/* Stat cards */
+.hb-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.hb-stat {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-align: left;
+}
+
+.hb-stat-label {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    font-weight: 500;
+}
+
+.hb-stat-value {
+    font-family: var(--font-display);
+    font-size: 1.65rem;
+    color: var(--ink);
+    line-height: 1.2;
+}
+
+.hb-stat-tag {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.hb-tag-red   { color: #ef4444; }
+.hb-tag-green { color: #16a34a; }
+.hb-tag-muted { color: #94a3b8; }
+
+/* Category bars */
+.hb-bars {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.hb-bar-row {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hb-bar-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-align: left;
+}
+
+.hb-bar-track {
+    height: 10px;
+    background: var(--border-soft);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.hb-bar {
+    height: 100%;
+    border-radius: 999px;
+}
+
+.hb-food   { background: #f59e0b; }
+.hb-travel { background: #3b82f6; }
+.hb-bills  { background: #8b5cf6; }
+
+@media (max-width: 700px) {
+    .hb-stats { grid-template-columns: 1fr; }
+    .hv2-actions { flex-direction: column; align-items: stretch; }
+    .hv2-subtitle br { display: none; }
+}
